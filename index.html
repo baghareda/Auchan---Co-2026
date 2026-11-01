@@ -17,20 +17,49 @@
             placeholder="type the product ..."
             class="text-gray-800 w-130">
 
-            <button class="text[#023047] text-base"></button>
+            <button class="text[#023047]"></button>
         </div>
             <div class="buttons flex items-center gap-8">
                 <button class="conatct-us">Categories</button>
                 <button class="categories">Conatct-us</button>
-                <button class="panier">Panier</button>
+                <button class="Add-Product">Add + </button>
             </div>
         </div>
     </nav>
 
-    <section class="drag-and-drop-panier">
-        <div class="top-of-dd flex flex-wrap justify-end rounded-lg h-16 ">
-            <h3 class="text-2xl flex justify-end p-8 pr-12 bg-[#ffb703] font-mono text-[#023047] border">Chose or slide a product</h3>
-        </div>
+    <div class="grid grid-cols-[1fr_450px] gap-6">
+    <section id="products-container" class="cards grid grid-cols-4">
+
     </section>
+
+    <section class="drag-and-drop-panier flex justify-end">
+        <div class="top-of-dd w-[450px] rounded-lg h-16 ">
+            <h3 class="text-2xl flex justify-end p-8 pr-12 bg-[#ffb703] 
+            font-mono text-[#023047] border rounded-lg">Chose or slide a product</h3>
+
+            <div class="add-to-panier w-[450px] h-113 
+            rounded-lg border p-4 bg-white">
+
+            <div id="card-items"></div>
+            <div id="cart-total" class="font-mono text-2xl border-t pt-3">Total : 0 DH</div>
+
+            </div>
+        </div>
+        
+    </section>
+    </div>
+
+    <div class="pagination flex justify-center items-center gap-8 mt-12 mb-12 text-[#023047] bg-[#023047] border
+    border-[#ffb703] px-5 py-3">
+
+        <button id="prev" class="btn cursor-pointer transition 
+        hover:bg-[#ffb703 hover:text-white font-mono text-2xl text-[#ffb703]">Previous</button>
+
+        <button id="current" class="first-page cursor-pointer transition text-white text-2xl ">-1-</button>
+
+        <button  id="next" class="next-page cursor-pointer transition
+        hover:bg-[#ffb703 hover:text-white font-mono text-2xl text-[#ffb703]">Next</button>
+    </div>
+<script src="js/main.js"></script>
 </body>
 </html>
