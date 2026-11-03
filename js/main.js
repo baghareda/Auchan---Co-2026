@@ -7,7 +7,15 @@ let currentpage = 1
 let cards;
 let totalpages;
 
+let cart = document.querySelector("#cart")
+
 let productscontainer = document.querySelector("#products-container")
+
+let cartproducts = []
+let cartitems = document.querySelector("#card-items")
+
+let total = 0;
+let carttotal = document.querySelector("#cart-total")
 
 function showpage()
 {
@@ -38,6 +46,14 @@ fetch("https://dummyjson.com/products/category/groceries?limit=24")
     {
         let card = document.createElement("div")
         card.classList.add("card", "border", "rounded-lg", "m-8")
+        card.draggable = true
+
+        card.addEventListener("dragstart", function(event)
+        {
+            event.dataTransfer.setData("title", product.title)
+            event.dataTransfer.setData("price", product.price)
+        })
+
         let name = document.createElement("div")
         name.textContent = product.title
         name.classList.add("product", "text-2xl", "font-mono")
@@ -82,3 +98,45 @@ previous.addEventListener("click", function ()
         }
     }
 })
+
+cart.addEventListener("dragover", function(event)
+{
+    event.preventDefault()
+})
+
+cart.addEventListener("drop", function(event)
+{
+    event.preventDefault()
+
+    let title = event.dataTransfer.getData("title")
+    let price = event.dataTransfer.getData("price")
+
+    console.log(title)
+    console.log(price)
+
+    cartproducts.push({
+        title: title,
+        price: Number(price),
+        quantity: 1
+    })
+    showcart()
+    console.log(cartproducts)
+})
+
+
+function showcart()
+{
+    cartitems.innerHTML = ""
+    total = 0
+
+    for (let product of cartproducts)
+    {
+        let item = document.createElement("div")
+        item.textContent = product.title + "-" + product.price + "DH"
+        item.classList.add("item", "font-mono", "text-2xl")
+
+        cartitems.appendChild(item)
+        total = total + product.price * product.quantity
+    }
+    carttotal.textContent = "Total : " + total.toFixed(2) + "DH"
+}
