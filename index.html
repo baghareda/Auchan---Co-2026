@@ -20,37 +20,46 @@
             <button class="text[#023047]"></button>
         </div>
             <div class="buttons flex items-center gap-8">
-                <button class="conatct-us">Categories</button>
-                <button class="categories">Conatct-us</button>
+                <button class="Acceuil">Acceuil</button>
+                <button class="conatct-us">conatct-us</button>
                 <button class="Add-Product">Add + </button>
             </div>
         </div>
     </nav>
 
     <div class="grid gap-6" style="flex:1;grid-template-columns:minmax(0,1fr) 450px">
-        <div style="display:flex;flex-direction:column;min-width:0">`
-            <section id="products-container" class="cards grid grid-cols-4">
+        <div style="display:flex;flex-direction:column;min-width:0">
+
+                <div class="categories-barer flex gap-8 m-8 justify-center">
+                    <button class="bg-[#ffb703] text-[#023047] font-mono text-2xl rounded-lg px-8 py-2">All</button>
+                    <button class="bg-[#ffb703] text-[#023047] font-mono text-2xl rounded-lg px-8 py-2">Fruits</button>
+                    <button class="bg-[#ffb703] text-[#023047] font-mono text-2xl rounded-lg px-8 py-2">legume</button>
+                    <button class="bg-[#ffb703] text-[#023047] font-mono text-2xl rounded-lg px-8 py-2">viande</button>
+                </div>
+
+            <section id="products-container" style="margin-top:auto;height:720px;grid-template-rows:repeat(2,1fr)" 
+            class="cards grid grid-cols-4"></section>
             </section>
-            <div style="margin-top:auto" class="pagination flex justify-center items-center gap-8 text-[#023047] bg-[#023047] border">
+            <div style="margin-top:24px;margin-bottom: 16px;" class="pagination flex justify-center items-center gap-8 text-[#023047] bg-[#023047] border rounded-lg">
 
         <button id="prev" class="btn cursor-pointer transition
-        hover:bg-[#ffb703] hover:text-white font-mono text-2xl text-[#ffb703]">Previous</button>
+        hover:bg-[#ffb703] hover:text-white font-mono text-3xl text-[#ffb703]">Previous</button>
 
         <button id="current" class="first-page cursor-pointer transition text-white text-2xl ">-1-</button>
 
         <button  id="next" class="next-page cursor-pointer transition
-        hover:bg-[#ffb703] hover:text-white font-mono text-2xl text-[#ffb703]">Next</button>
+        hover:bg-[#ffb703] hover:text-white font-mono text-3xl text-[#ffb703]">Next</button>
     </div>
         </div>
 
     <section class="drag-and-drop-panier flex justify-end">
-        <div style="display:flex;flex-direction:column" class="top-of-dd w-[450px] rounded-lg shrink-0 overflow-hidden border">
+        <div style="display:flex;flex-direction:column;height:105vh" class="top-of-dd w-[450px] rounded-lg shrink-0 overflow-hidden border">
             <h3 class="text-2xl text-right p-8 pr-12 bg-[#ffb703] 
             font-mono text-[#023047]">Choose or slide products</h3>
 
-            <div id="cart" style="flex:1;display:flex;flex-direction:column" class="add-to-panier p-4 bg-white">
+            <div id="cart" style="flex:1;min-height:0;overflow-y:auto" class="add-to-panier p-4 bg-white">
 
-            <div id="card-items" class="overflow-y-auto flex-1"></div>
+            <div id="card-items"></div>
             <div id="cart-total" class="font-mono text-2xl border-t pt-3 shrink-0">Total : 0 DH</div>
 
             </div>

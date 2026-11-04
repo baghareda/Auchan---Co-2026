@@ -1,3 +1,8 @@
+let allproducts = []
+let fruits = ["Apple", "Cucumber", "Kiwi", "Mulberry"]
+let legume = [""]
+let viande = []
+
 let previous = document.querySelector("#prev")
 let current = document.querySelector("#current")
 let next = document.querySelector("#next")
@@ -42,10 +47,24 @@ fetch("https://dummyjson.com/products/category/groceries?limit=24")
 
 .then(function(data)
 {
+    allproducts = data.products
+    console.log(allproducts)
+    for (let allpd of allproducts)
+    {
+        if (fruits.includes(allpd.title))
+        {
+            fruits.push(allpd)
+        }
+        if (legume.includes(allpd.title))
+        {
+            legume.push(allpd)
+        }
+    }
+
     for (let product of data.products)
     {
         let card = document.createElement("div")
-        card.classList.add("card", "border", "rounded-lg", "m-8")
+        card.classList.add("card", "border", "rounded-lg", "m-8", "overflow-hidden")
         card.draggable = true
 
         card.addEventListener("dragstart", function(event)
@@ -68,8 +87,21 @@ fetch("https://dummyjson.com/products/category/groceries?limit=24")
         price.textContent = "Prix : " + product.price + "DH"
         price.classList.add("price", "font-mono")
         card.appendChild(price)
-
         productscontainer.appendChild(card)
+
+        let addbtn = document.createElement("button")
+        addbtn.textContent = "Add to cart"
+        addbtn.classList.add("bg-[#ffb703]", "text-[#023247]", "font-mono", "rounded-lg", "px-4", "py-1", "m-2", "cursor-pointer")
+        addbtn.addEventListener("click", function()
+        {
+            cartproducts.push({
+                title: product.title,
+                price: product.price,
+                quantity: 1
+            })
+            showcart()
+        })
+        card.appendChild(addbtn)
     }
     cards = document.querySelectorAll(".card")
     totalpages = Math.ceil(cards.length / productsperpage)
