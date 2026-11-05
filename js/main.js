@@ -1,7 +1,13 @@
 let allproducts = []
 let fruits = ["Apple", "Cucumber", "Kiwi", "Mulberry"]
-let legume = [""]
-let viande = []
+let legume = ["Potatoes", "Red Onions", "Tomatoes"]
+let viande = ["Beef Steak", "Chicken Meat", "Fish Steak"]
+
+let fruitpd = []
+let legumepd = []
+let viandepd = []
+
+let filtred = []
 
 let previous = document.querySelector("#prev")
 let current = document.querySelector("#current")
@@ -10,6 +16,7 @@ let next = document.querySelector("#next")
 let productsperpage = 8
 let currentpage = 1
 let cards;
+let allcards;
 let totalpages;
 
 let cart = document.querySelector("#cart")
@@ -24,19 +31,36 @@ let carttotal = document.querySelector("#cart-total")
 
 function showpage()
 {
-    for (let card of cards)
+    for (let card of allcards)
     {
         card.classList.add("hidden")
     }
 
     let start = (currentpage - 1) * productsperpage 
     let end = start + productsperpage
+    if (end > cards.length) {end = cards.length}
 
     for (let counter = start; counter < end; counter++)
     {
         cards[counter].classList.remove("hidden")
     }
     current.textContent = currentpage
+}
+
+function showcategory(names)
+{
+    cards = []
+    for (let card of allcards)
+    {
+        let title = card.querySelector(".product").textContent
+        if (names === "all" || names.includes(title))
+        {
+            cards.push(card)
+        }
+    }
+    totalpages = Math.ceil(cards.length / productsperpage)
+    currentpage = 1
+    showpage()
 }
 
 fetch("https://dummyjson.com/products/category/groceries?limit=24")
@@ -48,17 +72,27 @@ fetch("https://dummyjson.com/products/category/groceries?limit=24")
 .then(function(data)
 {
     allproducts = data.products
-    console.log(allproducts)
+
     for (let allpd of allproducts)
     {
         if (fruits.includes(allpd.title))
         {
-            fruits.push(allpd)
+            fruitpd.push(allpd)
         }
+
         if (legume.includes(allpd.title))
         {
-            legume.push(allpd)
+            legumepd.push(allpd)
         }
+
+        if (viande.includes(allpd))
+        {
+            viandepd.push(allpd)
+        }
+        console.log(allproducts)
+
+        filtred = allproducts
+        console.log(filtred)
     }
 
     for (let product of data.products)
@@ -104,6 +138,7 @@ fetch("https://dummyjson.com/products/category/groceries?limit=24")
         card.appendChild(addbtn)
     }
     cards = document.querySelectorAll(".card")
+    allcards = cards
     totalpages = Math.ceil(cards.length / productsperpage)
     showpage()
 })
@@ -171,4 +206,13 @@ function showcart()
         total = total + product.price * product.quantity
     }
     carttotal.textContent = "Total : " + total.toFixed(2) + "DH"
+}
+
+
+let searchbar = document.querySelector("search")
+{
+    searchbar.addEventListener("click", function()
+    {
+        console.log(searchbar.allproducts)
+    })
 }
