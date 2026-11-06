@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>Auchan-clone</title>
+</head>
+
+
+
+<body class="bg-[#8ecae6]" style="min-height:100vh;display:flex;flex-direction:column">
+    <nav class="nav-bar shrink-0">
+        <div class="text-2xl flex justify-between bg-[#023047] text-[#ffb703] px-6 py-3 font-mono">
+
+        <div  class="logo h-16 w-16 shrink-0"><img src="images/Logo_panier_stylisé_Ymarket-removebg-preview.png" 
+            alt="logo"></div>
+        <div class="seaarch-bar flex items-center bg-[#8ecae6] rounded-lg px-8 py-2">
+            <input id="search" type="text"
+            placeholder="type the product ..."
+            class="text-gray-800 w-130">
+
+            <button class="text[#023047]"></button>
+        </div>
+            <div class="buttons flex items-center gap-8">
+                <a href="index.html" class="home">Acceuil</a>
+                <a href="contact-us.html" class="contact">conatct-us</a>
+                <button class="Add-Product">Add + </button>
+            </div>
+        </div>
+    </nav>  
+
+    <div style="display:flex; flex-direction: column; gap: 24px; width: 400px; margin: 100px auto;">
+
+        <input id="full-name" type="text" placeholder="Full name" 
+        style="background-color: white; border: 2px solid black; border-radius: 12px; padding: 14px;
+        font-size: 20px; font-family: monospace;">
+
+        <input id="email" type="email" placeholder="Email" style="background-color: white; border: 2px solid black; border-radius: 12px; padding: 14px;
+        font-size: 20px; font-family: monospace;">
+
+        <input id="phone-number" type="text" placeholder="Phone-number" style="background-color: white; border: 2px solid black; border-radius: 12px; padding: 14px;
+        font-size: 20px; font-family: monospace;">
+
+        <input id="message" type="text" placeholder="message" style="background-color: white; border: 2px solid black; border-radius: 12px; padding: 14px;
+        font-size: 20px; font-family: monospace;">
+
+        <button id="auto-fil" style= "background-color: #ffb703; border: 2px solid black; border-radius: 12px; padding: 14px;
+        font-size: 20px; font-family: monospace; cursor: pointer;">Auto-Fill</button>
+    </div>
+</body>

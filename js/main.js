@@ -1,6 +1,6 @@
 let allproducts = []
 let fruits = ["Apple", "Cucumber", "Kiwi", "Mulberry"]
-let legume = ["Potatoes", "Red Onions", "Tomatoes"]
+let legume = ["Potatoes", "Red Onions", "Lemon"]
 let viande = ["Beef Steak", "Chicken Meat", "Fish Steak"]
 
 let fruitpd = []
@@ -209,10 +209,23 @@ function showcart()
 }
 
 
-let searchbar = document.querySelector("search")
-{
-    searchbar.addEventListener("click", function()
+let searchbar = document.querySelector("#search")
+
+    searchbar.addEventListener("input", function()
     {
-        console.log(searchbar.allproducts)
-    })
-}
+        let text = searchbar.value.toLowerCase()
+        cards = []
+
+        for (let card of allcards)
+        {
+            let title = card.querySelector(".product").textContent.toLowerCase()
+
+            if (title.includes(text))
+            {
+                cards.push(card)
+            }
+        }
+        totalpages = Math.ceil(cards.length / productsperpage)
+        currentpage = 1
+        showpage()
+    });
