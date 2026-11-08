@@ -3,6 +3,7 @@ let email = document.querySelector("#email")
 let phonnumber = document.querySelector("#phone-number")
 let message = document.querySelector("#message")
 let autobtn = document.querySelector("#auto-fil")
+let submit = document.querySelector("#submit")
 
 let randommessages = [
     "Hello, I need more information about your products.",
@@ -15,7 +16,7 @@ let randommessages = [
 autobtn.addEventListener("click", function()
 {
     let randomindex = Math.floor(Math.random()* randommessages.length)
-    
+
     fetch("https://randomuser.me/api/")
     .then(function(response)
     {
@@ -30,4 +31,10 @@ autobtn.addEventListener("click", function()
         phonnumber.value = data.results[0].phone
         message.value = randommessages[randomindex]
     })
+})
+
+submit.addEventListener("click", function()
+{
+    console.log("submit clicked")
+    location.reload()
 })

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
     <link rel="stylesheet" href="contact-us.html">
+    <link rel="stylesheet" href="manager.html">
     <title>Auchan-clone</title>
 </head>
 
@@ -25,10 +26,20 @@
             <div class="buttons flex items-center gap-8">
                 <a href="index.html" class="home">Acceuil</a>
                 <a href="contact-us.html" class="contact">conatct-us</a>
-                <button class="Add-Product">Add + </button>
+                <button id="add-product" class="d-Product cursor-pointer">Add + </button>
             </div>
         </div>
     </nav>
+
+    <div id="product-popup" class="hidden fixed bg-black flex items-center justify-center z-50 inset-0">
+        <div class="bg-white w-[600px] p-6 rounded-xl shadow-xl">
+            <h1>Manage Products</h1>
+            <button id="close">Close</button>
+            <input id="product-name" type="text" placeholder="Enter the product name">
+            <input id="product-price" type="number" placeholder="Enter the product price">
+            <button id="addpd-btn">Add Product</button>
+        </div>
+    </div>
 
     <div class="grid gap-6" style="flex:1;grid-template-columns:minmax(0,1fr) 450px">
         <div style="display:flex;flex-direction:column;min-width:0">
@@ -40,18 +51,17 @@
                     <button onclick="showcategory(viande)" class="bg-[#ffb703] text-[#023047] font-mono text-2xl rounded-lg px-8 py-2 cursor-pointer">viande</button>
                 </div>
 
-            <section id="products-container" style="margin-top:auto;height:720px;grid-template-rows:repeat(2,1fr)" 
-            class="cards grid grid-cols-4"></section>
-            </section>
+            <section id="products-container" style="margin-top:24px;" class="cards grid grid-cols-4"></section>
+
             <div style="margin-top:24px;margin-bottom: 16px;" class="pagination flex justify-center items-center gap-8 text-[#023047] bg-[#023047] border rounded-lg">
 
-        <button id="prev" class="btn cursor-pointer transition
-        hover:bg-[#ffb703] hover:text-white font-mono text-3xl text-[#ffb703]">Previous</button>
+            <button id="prev" class="btn cursor-pointer transition
+            hover:bg-[#ffb703] hover:text-white font-mono text-3xl text-[#ffb703]">Previous</button>
 
-        <button id="current" class="first-page cursor-pointer transition text-white text-2xl ">-1-</button>
+            <button id="current" class="first-page cursor-pointer transition text-white text-2xl ">-1-</button>
 
-        <button  id="next" class="next-page cursor-pointer transition
-        hover:bg-[#ffb703] hover:text-white font-mono text-3xl text-[#ffb703]">Next</button>
+            <button  id="next" class="next-page cursor-pointer transition
+            hover:bg-[#ffb703] hover:text-white font-mono text-3xl text-[#ffb703]">Next</button>
     </div>
         </div>
 
@@ -71,5 +81,7 @@
     </section>
     </div>
 <script src="js/main.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/manager.js"></script>
 </body>
 </html>

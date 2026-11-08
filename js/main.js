@@ -128,11 +128,26 @@ fetch("https://dummyjson.com/products/category/groceries?limit=24")
         addbtn.classList.add("bg-[#ffb703]", "text-[#023247]", "font-mono", "rounded-lg", "px-4", "py-1", "m-2", "cursor-pointer")
         addbtn.addEventListener("click", function()
         {
-            cartproducts.push({
-                title: product.title,
-                price: product.price,
-                quantity: 1
-            })
+            let found = false
+
+            for (let item of cartproducts)
+            {
+                if (item.title === product.title)
+                {
+                    item.quantity++;
+                    found = true
+                    break
+                }
+            }
+
+            if (found === false)
+            {
+                cartproducts.push({
+                    title: product.title,
+                    price: product.price,
+                    quantity: 1
+                })
+            }
             showcart()
         })
         card.appendChild(addbtn)
@@ -182,8 +197,8 @@ cart.addEventListener("drop", function(event)
     console.log(price)
 
     cartproducts.push({
-        title: title,
-        price: Number(price),
+        title: product.title,
+        price: product.Number(price),
         quantity: 1
     })
     showcart()
@@ -199,7 +214,7 @@ function showcart()
     for (let product of cartproducts)
     {
         let item = document.createElement("div")
-        item.textContent = product.title + "-" + product.price + "DH"
+        item.textContent = product.title + "-" + product.price + "DH (X " + product.quantity +")"
         item.classList.add("item", "font-mono", "text-2xl")
 
         cartitems.appendChild(item)
