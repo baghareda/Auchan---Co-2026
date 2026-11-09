@@ -197,8 +197,8 @@ cart.addEventListener("drop", function(event)
     console.log(price)
 
     cartproducts.push({
-        title: product.title,
-        price: product.Number(price),
+        title: title,
+        price: Number(price),
         quantity: 1
     })
     showcart()
