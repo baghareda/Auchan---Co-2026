@@ -31,12 +31,22 @@
         </div>
     </nav>
 
-    <div id="product-popup" class="hidden fixed bg-black flex items-center justify-center z-50 inset-0">
-        <div class="bg-white w-[600px] p-6 rounded-xl shadow-xl">
-            <h1>Manage Products</h1>
-            <button id="close">Close</button>
-            <input id="product-name" type="text" placeholder="Enter the product name">
-            <input id="product-price" type="number" placeholder="Enter the product price">
+    <div id="product-popup" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="bg-white w-[500px] p-8 rounded-2xl shadow-2xl border border-gray-200">
+
+            <h1 class= "text-2xl font-bold text-[#023047] mb-6" >Manage Products</h1>
+
+            <button id="close" class="bg-gray-200 text-[#023047] px-5 py-2 
+            rounded-lg hover:bg-gray-300 cursor-pointer">X</button>
+
+            <input id="product-name" type="text" placeholder="Enter the product name"
+            class= "w-full border border-gray-300 rounded-lg px-4 py-3 m-4
+            outline-none focus:ring-2">
+
+            <input id="product-price" type="number" placeholder="Enter the product price" 
+            class= "w-full border border-gray-300 rounded-lg px-4 py-3 m-4
+            outline-none focus:ring-2">
+
             <button id="addpd-btn">Add Product</button>
         </div>
     </div>
